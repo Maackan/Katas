@@ -27,20 +27,37 @@ namespace Scheduler
             button_Add.Click += Button_Add_Click;
             button_ChangeDate.Click += Button_ChangeDate_Click;
 
+            
             RefreshDisplayedMeetings();
         }
 
         private void Button_ChangeDate_Click(object sender, EventArgs e)
         {
-            int index = listBox_Meetings.SelectedIndex; 
-            _caseWorker.ChangeMeeting(index, dateTimePicker.Value);
-            RefreshDisplayedMeetings();
+            int index = listBox_Meetings.SelectedIndex;
+            try
+            {
+                _caseWorker.ChangeMeeting(index, dateTimePicker.Value);
+                RefreshDisplayedMeetings();
+            }
+            catch //Detta är en Catch all så den fångar upp alla typer av fel. Man kan skriva (Exception exception) så är det en grundklass
+            {
+                MessageBox.Show("Overlapping another meeting. Try Again.");
+            }
+            
+
         }
 
         private void Button_Add_Click(object sender, EventArgs e)
         {
-            _caseWorker.NewDateAdded(dateTimePicker.Value);
-            RefreshDisplayedMeetings();
+            try
+            {
+                _caseWorker.NewDateAdded(dateTimePicker.Value);
+                RefreshDisplayedMeetings();
+            }
+            catch (MeetingOverlapException exception) //Specifikt för det felet vi "sökt". Använder sig av exception som Björn skapat sen innan i koden så jag kan kalla på exception .Message
+            {
+                MessageBox.Show(exception.Message, "Overlap", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         public void RefreshDisplayedMeetings()

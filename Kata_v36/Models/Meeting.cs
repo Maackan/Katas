@@ -19,6 +19,7 @@ namespace Scheduler.Models
             Start = start;
             Duration = duration;
             Applicant = null;
+
         }
 
         public bool Overlap(Meeting meeting)
@@ -31,9 +32,26 @@ namespace Scheduler.Models
 
         public override string ToString()
         {
-            string date = Start.ToString("d'/'M'/'yy");
+            string date = Start.ToString("d'/'M'/'yy/");
 
-            string info = date;
+            //string timeOfDay = Start.ToString("HH:mm") + " - " + Start.Add(Duration).ToString("HH:mm");
+
+            //string endOfMeeting = Start.ToString(duration
+            //timeOfDay = TimeSpan(add)
+            string meetingStart = Start.ToString("HH:mm");
+
+            DateTime end = Start + Duration;
+            string meetingEnd = end.ToString(("HH:mm"));
+
+
+
+
+
+
+
+
+
+            string info = date + " " + meetingStart + " - " + meetingEnd;
 
             if (Applicant != null)
                 info += " with: " + Applicant.Name;

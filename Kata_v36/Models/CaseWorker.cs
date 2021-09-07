@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Text;
 using Scheduler.Exceptions;
 
 namespace Scheduler.Models
@@ -16,6 +18,7 @@ namespace Scheduler.Models
             DateTime startOfWork = DateTime.Today.AddHours(8);
             for (int i = 0; i < 6; i++)
             {
+                
                 DateTime startOfMeeting = startOfWork.AddHours(i);
                 Meeting meeting = new Meeting(startOfMeeting);
 
@@ -27,10 +30,19 @@ namespace Scheduler.Models
         {
             Meeting newMeeting = new Meeting(start);
 
-            foreach (Meeting meeting in Meetings)
-            {
-                // TODO kasta MeetingOverlapException om två möten överlappar
-            }
+            
+                foreach (Meeting meeting in Meetings)
+                {
+                    if (meeting.Overlap(newMeeting))
+                    {
+                        throw new MeetingOverlapException((meeting));
+                        Debug.Write("meeting time already booked");
+                    }
+
+                    
+                    // TODO kasta MeetingOverlapException om två möten överlappar
+                }
+           
 
             Meetings.Add(newMeeting);
         }
@@ -42,7 +54,12 @@ namespace Scheduler.Models
 
             foreach (Meeting meeting in Meetings)
             {
-                if (meeting == meetingToChange)
+                if (meeting.Overlap(attemptMeeting))
+                {
+                    throw new MeetingOverlapException(meeting);
+                    
+                }
+                else if (meeting == meetingToChange)
                     continue;
 
                 // TODO kasta MeetingOverlapException om två möten överlappar

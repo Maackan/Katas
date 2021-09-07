@@ -6,11 +6,11 @@ namespace TestPrintDebugging
 {
     public class Test
     {
-        private readonly ITestOutputHelper _output;
+        private readonly ITestOutputHelper _output; 
 
         public Test(ITestOutputHelper output)
         {
-            _output = output;
+            _output = output; //Konstruktorn och classen gör att man får ett outputfönster i xUnit.
         }
 
         [Fact]

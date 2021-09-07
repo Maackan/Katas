@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Scheduler.Models
                 Applicant applicant = new Applicant();
                 applicant.Name = randomNames[i];
                 UnassignedApplicants.Add(applicant);
+                //Debug.WriteLine("Applicant name:" + applicant.Name);// Detta hamnar i "output" ifall man vill testa i winforms t.ex som inte har console.
             }
 
             for (int i = 0; i < 4; i++)
@@ -36,6 +38,7 @@ namespace Scheduler.Models
 
         public void RandomlyFillUpMeetings()
         {
+            
             foreach (CaseWorker caseWorker in CaseWorkers)
             {
                 foreach (Meeting meeting in caseWorker.Meetings)
@@ -45,10 +48,14 @@ namespace Scheduler.Models
 
                     if (meeting.Applicant == null)
                     {
-                        int randomIndex = 0; //TODO detta är inte slumpat.
 
+                        Random rand = new Random();
+                        int randomIndex = rand.Next(0, UnassignedApplicants.Count); //TODO detta är inte slumpat.
+                        
                         meeting.Applicant = UnassignedApplicants[randomIndex];
                         UnassignedApplicants.RemoveAt(randomIndex);
+                        
+
                     }
                 }
             }

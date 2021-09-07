@@ -11,6 +11,7 @@ namespace TestAssertDebugging
             List<Visitor> visitors = new List<Visitor>();
             visitors.Add(new Visitor("Henry Ford"));
             visitors.Add(new Visitor("Victoria"));
+            visitors.Add(new Visitor("Markus Andersson"));
 
             for (int i = visitors.Count - 1; i >= 0; i--)
             {
@@ -18,6 +19,9 @@ namespace TestAssertDebugging
                 Debug.Assert(visitor.Name != null, "Namnet saknas");
                 Debug.Assert(visitor.Name.Length > 4, "Namnet är för kort");
                 Debug.Assert(visitor.Name.Contains(' '), "Namn saknar mellanslag");
+                Debug.Assert(visitors != null);
+                
+                //Lägger in småtester i sitt program.
             }
         }
     }
