@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Robberslanguage", "Robbersl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobbersLanguageTest", "RobbersLanguageTest\RobbersLanguageTest.csproj", "{96F8F2DD-EF52-46A2-BAD8-9CFB8182B39B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChuckJokeRadio", "ChuckJokeRadio\ChuckJokeRadio.csproj", "{25D3A99E-9915-475F-BE4F-A449CF442CEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{96F8F2DD-EF52-46A2-BAD8-9CFB8182B39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96F8F2DD-EF52-46A2-BAD8-9CFB8182B39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96F8F2DD-EF52-46A2-BAD8-9CFB8182B39B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25D3A99E-9915-475F-BE4F-A449CF442CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25D3A99E-9915-475F-BE4F-A449CF442CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25D3A99E-9915-475F-BE4F-A449CF442CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25D3A99E-9915-475F-BE4F-A449CF442CEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{002A5C4A-C265-46CF-9FD0-94EB35BECB26} = {799B7DAF-AEDD-47D3-BC7A-C46E4FA8E202}
 		{BA4A7659-86FD-467D-947E-06283EDD957C} = {E5CC67B8-18B2-4480-92D4-DF36A0625AF1}
 		{96F8F2DD-EF52-46A2-BAD8-9CFB8182B39B} = {E5CC67B8-18B2-4480-92D4-DF36A0625AF1}
+		{25D3A99E-9915-475F-BE4F-A449CF442CEA} = {668EF8CB-EBF5-449E-B7CA-28BBF5838231}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AD3CB080-6783-4497-B000-C0035FF85549}

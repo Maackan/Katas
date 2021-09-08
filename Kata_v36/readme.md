@@ -13,10 +13,10 @@ timespan för hur långt mötet varar.
 
 I CaseWorkerVisualSchedule.RefreshDisplayedMeetings() så finns det
 en for-loop som går igenom alla möten och representerar dem
-i text.
+i text. Vilken text som kommer per möte bestäms i Meeting.ToString()
 
 2. Använd formatet `"H:mm"` för att lägga till från
-    _när_ till _när_ ett möte ska ske. Använd addition för att lista ut när mötet slutar.
+    _när_ till _när_ ett möte ska ske i Meeting.ToString(). Använd addition för att lista ut när mötet slutar.
 > ett möte klockan 8:00 som varar 30 min ska alltså se ut som `6/9/21 8:00 - 8:30`
 
 ### Felhanteringen
@@ -93,3 +93,18 @@ via formen på `CaseWorkerVisualSchedule` konstruktorn!
 
 Det finns både namnlistor och möteslistor nu, så det hade varit lämpligt att hålla
 dem sorterade.
+
+8. Första steget är att skapa en metod som kan ta in och jämföra två `Applicant`:s
+    genom att titta på deras namn.
+
+9. Ta sedan och sortera `UnassignedApplicants` listan när den skapas och 
+    när den töms, genom att kalla på `.Sort()` och skicka med metoden.
+
+10. Gör nu en liknande metod, fast för att sortera `Meeting` objekt istället.
+    De ska jämföras utifrån tiden möterna startar.
+
+11. Hitta alla ställen där `Meetings` listan skapas/förändras, och se till att
+    den efteråt sorteras med hjälp av metoden från punkt __10.__
+
+Nu kommer mötena att hamna i kronologisk ordning även om ett möte senareläggs
+eller ett tidigare möte läggs till! Bra jobbat!
