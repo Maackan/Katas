@@ -10,6 +10,7 @@ namespace Scheduler.Models
 
         public Meeting(DateTime start)
         {
+            
             Start = start;
             Duration = TimeSpan.FromMinutes(30);
             Applicant = null;

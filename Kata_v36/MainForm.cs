@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Scheduler.Models;
@@ -16,11 +17,14 @@ namespace Scheduler
 
             _scheduler = new Models.Scheduler();
             _visualSchedules = new List<CaseWorkerVisualSchedule>();
+            
 
             foreach (var caseWorker in _scheduler.CaseWorkers)
             {
-                CaseWorkerVisualSchedule caseWorkerVisualSchedule = new CaseWorkerVisualSchedule(caseWorker);
+                CaseWorkerVisualSchedule caseWorkerVisualSchedule = new CaseWorkerVisualSchedule(caseWorker, RefreshFreeSpotsLabel);
                 caseWorkerVisualSchedule.Size = new Size(500, 400);
+                
+
 
                 flowLayoutPanel_CaseWorkerSchedules.Controls.Add(caseWorkerVisualSchedule);
                 _visualSchedules.Add(caseWorkerVisualSchedule);
@@ -43,6 +47,8 @@ namespace Scheduler
                 visualSchedule.RefreshDisplayedMeetings();
             }
         }
+
+        
         private void RefreshFreeSpotsLabel()
         {
             int availableSpots = 0;

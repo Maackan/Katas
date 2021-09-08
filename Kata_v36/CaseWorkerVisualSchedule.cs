@@ -15,9 +15,10 @@ namespace Scheduler
     public partial class CaseWorkerVisualSchedule : UserControl
     {
         private readonly CaseWorker _caseWorker;
-
-        public CaseWorkerVisualSchedule(CaseWorker caseWorker)
+        private readonly Action _meetingAddedHandler;
+        public CaseWorkerVisualSchedule(CaseWorker caseWorker, Action meetingAddedHandler)
         {
+            _meetingAddedHandler = meetingAddedHandler;
             _caseWorker = caseWorker;
             InitializeComponent();
 
@@ -49,15 +50,19 @@ namespace Scheduler
 
         private void Button_Add_Click(object sender, EventArgs e)
         {
+            
             try
             {
+                
                 _caseWorker.NewDateAdded(dateTimePicker.Value);
                 RefreshDisplayedMeetings();
+                _meetingAddedHandler();
             }
             catch (MeetingOverlapException exception) //Specifikt för det felet vi "sökt". Använder sig av exception som Björn skapat sen innan i koden så jag kan kalla på exception .Message
             {
                 MessageBox.Show(exception.Message, "Overlap", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            
         }
 
         public void RefreshDisplayedMeetings()

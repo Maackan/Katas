@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text.Json;
 
 namespace ChuckJokeRadio
 {
@@ -14,14 +15,40 @@ namespace ChuckJokeRadio
             {
                 string url = @"https://api.chucknorris.io/jokes/random";
                 string json = client.GetStringAsync(url).Result;
+                /* //Det nedanför är hämtat från jsonformatter.org. där jag klistrade in texten från skämthemsidan för att kunna sortera json texten.
+                  {
+               "categories": [],
+              "created_at": "2020-01-05 13:42:23.240175",
+              "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+              "id": "QHx5U_sdTpCpbf4yO59miA",
+              "updated_at": "2020-01-05 13:42:23.240175",
+              "url": "https://api.chucknorris.io/jokes/QHx5U_sdTpCpbf4yO59miA",
+              "value": "Once, while dining in a fancy New York restaurant, Chuck Norris discovered a fly in his soup. There were no survivors."
+                   }
+                 */
+
 
                 string startTag = "\"value\":\"";
                 int start = json.IndexOf(startTag) + startTag.Length;
                 int end = json.IndexOf("\"}", start);
 
+                string startTagDate = "\"created_at\":\"";
+                int startDate = json.IndexOf(startTagDate) + startTagDate.Length;
+                int endDate = json.IndexOf("\"", startDate);
+
+                DateTime dateTag = new DateTime(); //försök använda DateTime istället för att sedan kunna köra ToString("yy/mm/dd/HH:mm") osv
+
+                //dateTag = JsonSerializer.Deserialize<DateTime>(endDate);
+                
+
+                 
+
+                string date = json.Substring(startDate, endDate - startDate);
                 string joke = json.Substring(start, end - start);
                 
                 Console.WriteLine(joke);
+                Console.WriteLine("\nThis Joke was added : " + date);
+                //Console.WriteLine(dateTag);
 
                 Console.WriteLine();
                 Console.Write("Press enter for another joke");

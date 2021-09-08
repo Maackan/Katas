@@ -29,14 +29,17 @@ namespace Scheduler.Models
         public void NewDateAdded(DateTime start)
         {
             Meeting newMeeting = new Meeting(start);
-
-            
-                foreach (Meeting meeting in Meetings)
+            bool lunch = newMeeting.Start.Hour.Equals(12) && newMeeting.Start.Minute.Equals(30);
+            foreach (Meeting meeting in Meetings)
                 {
                     if (meeting.Overlap(newMeeting))
                     {
                         throw new MeetingOverlapException((meeting));
                         Debug.Write("meeting time already booked");
+                    }
+                    else if(lunch) //Lägg till
+                    {
+                    //lägg in en egen throw som gör en lunchvarning
                     }
 
                     
