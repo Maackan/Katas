@@ -6,9 +6,11 @@ namespace OnlineOrderSystem
 {
     class Program
     {
+        private static List<OnlineOrder> orders;
         static void Main(string[] args)
         {
-            //EnterMainLoop();
+            orders = new List<OnlineOrder>();
+            EnterMainLoop();
         }
 
         static void EnterMainLoop()
@@ -32,11 +34,36 @@ namespace OnlineOrderSystem
 
                 if (choice == 1)
                 {
-                    // lägg till ny beställning till listan
+                    orders.Add(new OnlineOrder("electric bicycle"));
                 }
                 else if (choice == 2)
                 {
-                    // lägg till ny beställning till listan
+                    orders.Add(new OnlineOrder("trampoline"));
+                }
+                else if (choice == 3)
+                {
+                    orders.Add(new OnlineOrder("bouquet"));
+                }
+                else if (choice == 4)
+                {
+                    Console.Write("Type in order: ");
+                    string articleName = Console.ReadLine();
+                    orders.Add(new OnlineOrder(articleName));
+                }
+                else if (choice == 6)
+                {
+                    // TODO lägg till en dictionary itemRecord som har nyckeltyp 'string' och värdetyp 'int'
+
+                    foreach (var order in orders)
+                    {
+                        
+                    }
+
+                    //foreach (var record in itemRecord)
+                    {
+                        
+                    }
+                    Console.WriteLine("6: Show amount of each order");
                 }
                 else if (choice == 7)
                 {
