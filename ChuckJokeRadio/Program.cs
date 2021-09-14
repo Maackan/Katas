@@ -36,19 +36,22 @@ namespace ChuckJokeRadio
                 int startDate = json.IndexOf(startTagDate) + startTagDate.Length;
                 int endDate = json.IndexOf("\"", startDate);
 
-                DateTime dateTag = new DateTime(); //försök använda DateTime istället för att sedan kunna köra ToString("yy/mm/dd/HH:mm") osv
 
-                //dateTag = JsonSerializer.Deserialize<DateTime>(endDate);
+                string date = json.Substring(startDate, endDate - startDate);
+                DateTime dateTag = DateTime.Parse(date); //försök använda DateTime istället för att sedan kunna köra ToString("yy/mm/dd/HH:mm") osv
+
+                
                 
 
                  
 
-                string date = json.Substring(startDate, endDate - startDate);
+                
                 string joke = json.Substring(start, end - start);
                 
                 Console.WriteLine(joke);
-                Console.WriteLine("\nThis Joke was added : " + date);
-                //Console.WriteLine(dateTag);
+                //Console.WriteLine("\nThis Joke was added : " + dateTag.Year + "/" + dateTag.Month + "/" + dateTag.Day);
+                Console.WriteLine("This joke was added : " + dateTag.ToString("yy'/'M'/'d"));
+               
 
                 Console.WriteLine();
                 Console.Write("Press enter for another joke");
