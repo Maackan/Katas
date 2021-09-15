@@ -52,16 +52,7 @@ namespace ChuckJokeRadio
                 DateTime dateTag = DateTime.Parse(date); //försök använda DateTime istället för att sedan kunna köra ToString("yy/mm/dd/HH:mm") osv
 
                 
-                
-
-                 
-
-                
                 string joke = json.Substring(start, end - start);
-
-                string dateString = "2020-01-05 13:42:23.484083";
-                DateTime date = DateTime.Parse(dateString);
-
                 Console.WriteLine(joke);
                 //Console.WriteLine("\nThis Joke was added : " + dateTag.Year + "/" + dateTag.Month + "/" + dateTag.Day);
                 Console.WriteLine("This joke was added : " + dateTag.ToString("yy'/'M'/'d"));
