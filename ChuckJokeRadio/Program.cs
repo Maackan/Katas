@@ -7,6 +7,17 @@ namespace ChuckJokeRadio
     class Program
     {
         //TODO plocka även ut och visa datumet för när skämtet skapades/senast uppdaterades
+        /* Exempel på ett svar från servern
+            {
+              "categories": [],
+              "created_at": "2020-01-05 13:42:23.484083",
+              "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+              "id": "cRcjbqJpQ-GMzIawRcvVlA",
+              "updated_at": "2020-01-05 13:42:23.484083",
+              "url": "https://api.chucknorris.io/jokes/cRcjbqJpQ-GMzIawRcvVlA",
+              "value": //"The only time Chuck Norris felt sadness was when he read Nuck Chorris' jokes."
+            }
+        */
         static void Main(string[] args)
         {
             HttpClient client = new HttpClient();
@@ -47,7 +58,10 @@ namespace ChuckJokeRadio
 
                 
                 string joke = json.Substring(start, end - start);
-                
+
+                string dateString = "2020-01-05 13:42:23.484083";
+                DateTime date = DateTime.Parse(dateString);
+
                 Console.WriteLine(joke);
                 //Console.WriteLine("\nThis Joke was added : " + dateTag.Year + "/" + dateTag.Month + "/" + dateTag.Day);
                 Console.WriteLine("This joke was added : " + dateTag.ToString("yy'/'M'/'d"));
